@@ -33,7 +33,11 @@ class MeetingMemberSerializer(ModelSerializer):
 
 
 class ScheduleSerializer(ModelSerializer):
-    meeting = MeetingSerializer(read_only=True)
+    meeting = MeetingSerializer(read_only=True, many=False)
+    meeting_id = serializers.PrimaryKeyRelatedField(
+        queryset=Meeting.objects.all(),
+        source='meeting', write_only=True
+    )
 
     class Meta:
         model = Schedule
