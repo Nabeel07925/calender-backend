@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from schedule import serializers
 from schedule.models import Meeting, MeetingMember, Schedule, MeetingHost
@@ -15,6 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class MeetingViewSet(viewsets.ModelViewSet):
     queryset = Meeting.objects.all()
     serializer_class = MeetingSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 # class MeetingMemberViewSet(serializers.ModelSerializer):
@@ -30,3 +31,4 @@ class MeetingHostViewSet(viewsets.ModelViewSet):
 class ScheduleViewSet(viewsets.ModelViewSet):
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
+    permission_classes = [permissions.AllowAny]
