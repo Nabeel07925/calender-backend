@@ -33,6 +33,7 @@ class MeetingMemberSerializer(ModelSerializer):
 
 
 class ScheduleSerializer(ModelSerializer):
+    meeting = MeetingSerializer(read_only=True)
 
     class Meta:
         model = Schedule
