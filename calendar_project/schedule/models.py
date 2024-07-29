@@ -7,6 +7,7 @@ from calendar_project.models import BaseModel
 class Meeting(BaseModel):
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=2000, null=True, blank=True)
+    # member = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class MeetingHost(BaseModel):

@@ -11,7 +11,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MeetingMemberSerializer(ModelSerializer):
+
+    class Meta:
+        model = MeetingMember
+        fields = '__all__'
+
+
 class MeetingSerializer(ModelSerializer):
+    meeting_members = MeetingMemberSerializer(many=True, read_only=True)
 
     class Meta:
         model = Meeting
@@ -22,13 +30,6 @@ class MeetingHostSerializer(ModelSerializer):
 
     class Meta:
         model = MeetingHost
-        fields = '__all__'
-
-
-class MeetingMemberSerializer(ModelSerializer):
-
-    class Meta:
-        model = MeetingMember
         fields = '__all__'
 
 
